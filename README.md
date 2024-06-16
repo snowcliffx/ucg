@@ -11,3 +11,4 @@
 - DataStore(?): Unfinished.
 - Other Client Scripts: Unfinished.
 - Instance Reorganization: Unfinished.
+- Restructure code for Core Enterprise Monologue: Unfinished.

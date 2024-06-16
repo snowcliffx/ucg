@@ -1,0 +1,61 @@
+{
+  "name": "Place1",
+  "className": "DataModel",
+  "filePaths": ["default.project.json"],
+  "children": [
+    { "name": "ReplicatedStorage", "className": "ReplicatedStorage" },
+    {
+      "name": "ServerScriptService",
+      "className": "ServerScriptService",
+      "children": [
+        {
+          "name": "Systems",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "LaserSystem",
+              "className": "ModuleScript",
+              "filePaths": ["src/server\\Systems\\LaserSystem.luau"]
+            }
+          ]
+        },
+        {
+          "name": "Handlers",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "MainHandler",
+              "className": "Script",
+              "filePaths": ["src/server\\Handlers\\MainHandler.server.luau"]
+            }
+          ]
+        },
+        {
+          "name": "Logic",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "PlayerLogic",
+              "className": "Script",
+              "filePaths": ["src/server\\Logic\\PlayerLogic.server.luau"]
+            }
+          ]
+        }
+      ]
+    },
+    { "name": "ServerStorage", "className": "ServerStorage" },
+    { "name": "SoundService", "className": "SoundService" },
+    {
+      "name": "StarterPlayer",
+      "className": "StarterPlayer",
+      "children": [
+        {
+          "name": "StarterCharacterScripts",
+          "className": "StarterCharacterScripts"
+        },
+        { "name": "StarterPlayerScripts", "className": "StarterPlayerScripts" }
+      ]
+    },
+    { "name": "Workspace", "className": "Workspace" }
+  ]
+}

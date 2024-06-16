@@ -7,14 +7,12 @@ local TweenService = game:GetService("TweenService")
 local LaserSystem = {}
 
 --[ CONSTANT TWEENS ]--
-
--- REGULAR
 local LINEAR_TWEEN = TweenInfo.new(1, Enum.EasingStyle.Linear)
 local TOGGLE_RETRACT_TWEEN = TweenInfo.new(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
--- PRIME
+
 local PRIME_EXTEND_TWEEN = TweenInfo.new(5, Enum.EasingStyle.Cubic, Enum.EasingDirection.InOut)
 local PRIME_COLOR_TWEEN = TweenInfo.new(5, Enum.EasingStyle.Linear)
--- DESTROY
+
 local DESTROY_RETRACT_TWEEN = TweenInfo.new(4, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out)
 local DESTROY_COLOR_TWEEN = TweenInfo.new(2, Enum.EasingStyle.Linear)
 

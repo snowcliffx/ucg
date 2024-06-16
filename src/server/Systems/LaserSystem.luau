@@ -146,6 +146,7 @@ function LaserSystem.DestroyLaser(laser: Model)
 	laser.Mechanics.LaserTopBeam.ExplosionSound:Play()
 	laser.Mechanics.LaserTopBeam.Smoke.Fire.Enabled = true
 
+	-- TWEENS
 	LaserSystem.RetractLaser(laser, 15, DESTROY_RETRACT_TWEEN)
 	LaserSystem.ChangeColor(laser, DESTROY_COLOR, DESTROY_COLOR_TWEEN)
 end

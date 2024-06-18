@@ -9,6 +9,7 @@ local TweenService = game:GetService("TweenService")
 --[ MODULES ]--
 local LaserSystem = require(ServerScriptService.Systems.LaserSystem)
 local LightSystem = require(ServerScriptService.Systems.LightSystem)
+local ShieldSystem = require(ServerScriptService.Systems.ShieldSystem)
 
 --[ OUR MAIN MODULE FOR THE REACTOR SYSTEM]
 local ReactorSystem = {}

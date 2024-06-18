@@ -24,13 +24,18 @@ local PRIME_COLOR_TWEEN = TweenInfo.new(5, Enum.EasingStyle.Linear)
 local DESTROY_RETRACT_TWEEN = TweenInfo.new(4, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out)
 local DESTROY_COLOR_TWEEN = TweenInfo.new(2, Enum.EasingStyle.Linear)
 
+local FLASH_TWEEN = TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out, 1, true, 1)
+
 --[ BRIGHTNESS CONSTANTS ]--
 local MIN_BRIGHTNESS = { Brightness = 0 }
 local MED_BRIGHTNESS = { Brightness = 5 }
 local MAX_BRIGHTNESS = { Brightness = 10 }
 
 --[ COLOR CONSTANTS ]--
+local WHITE_COLOR = Color3.new(1, 1, 1)
+local _BLACK_COLOR = Color3.new(0, 0, 0) -- not used currently
 local PRIME_COLOR = Color3.fromRGB(225, 225, 225)
+local FLASH_COLOR = Color3.fromRGB(255, 155, 0)
 local DESTROY_COLOR = Color3.fromRGB(225, 65, 0)
 
 --[ FUNCTIONS ]--
@@ -122,21 +127,46 @@ function LaserSystem.ToggleLaser(laser: Model, state: boolean)
 	Mechanics.LaserTopBeam.BottomParticles.Particles3.Enabled = state
 end
 
-function LaserSystem.LaserStartup(laser: Model)
-	for index, part in ipairs(laser.Mechanics.Vents:GetChildren()) do
-		part.ParticleEmitter.Enabled = true
+function LaserSystem.FlashLaser(laser: Model, state: boolean)
+	if laser:GetAttribute("Flashing") == state then
+		return
 	end
 
-	laser.Mechanics.LaserTopBeam.ShieldParticles.Particles1.Enabled = true
-end
+	laser:SetAttribute("Flashing", state)
 
-function LaserSystem.FlashLaser(laser: Model, state: true)
+	if state == true then
+		for index, part in ipairs(laser.Mechanics.Neons:GetChildren()) do
+			local OldColor = part.Color
 
+			local PriorTween = TweenService:Create(part, LINEAR_TWEEN, { Color = WHITE_COLOR })
+			local FlashTween = TweenService:Create(part, FLASH_TWEEN, { Color = FLASH_COLOR })
+
+			FlashTween.Completed:Connect(function()
+				if laser:GetAttribute("Flashing") == true then
+					FlashTween:Play()
+				else
+					FlashTween:Cancel()
+					FlashTween:Destroy()
+
+					TweenService:Create(part, LINEAR_TWEEN, { Color = OldColor })
+				end
+			end)
+
+			PriorTween.Completed:Connect(function()
+				PriorTween:Cancel()
+				PriorTween:Destroy()
+
+				FlashTween:Play()
+			end)
+
+			PriorTween:Play()
+		end
+	end
 end
 
 function LaserSystem.ChangeColor(laser: Model, color: Color3, tweeninfo: TweenInfo)
 	-- TWEEN COLOR FOR EVERY NEON PART
-	for index, part in ipairs(laser.Mechanics.Neons) do
+	for index, part in ipairs(laser.Mechanics.Neons:GetChildren()) do
 		TweenService:Create(part, tweeninfo, { Color = color }):Play()
 	end
 end

@@ -30,8 +30,8 @@ local LightSystem = {}
 local GameFolder = game.Workspace.Game
 
 --[ COLOR CONSTANTS ]--
-local COLOR_BLACK = Color3.new(0, 0, 0)
-local COLOR_WHITE = Color3.new(1, 1, 1)
+local BLACK_COLOR = Color3.new(0, 0, 0)
+local WHITE_COLOR = Color3.new(1, 1, 1)
 
 --[ SOUNDS ]--
 local ToggleOnSound = ReplicatedStorage.SharedAssets.Audio.Light.ToggleOn
@@ -93,7 +93,7 @@ local function ToggleLightEffects(lightpart: BasePart, color: Color3, sound: Sou
 end
 
 local function FlickerLightEffects(lightpart: BasePart, max_delay, after_color)
-	ToggleLightEffects(lightpart, COLOR_BLACK, FlickerSound:Clone(), false)
+	ToggleLightEffects(lightpart, BLACK_COLOR, FlickerSound:Clone(), false)
 	task.wait(RandomInst:NextNumber(0, max_delay))
 	ToggleLightEffects(lightpart, after_color, FlickerSound:Clone(), true)
 end
@@ -121,7 +121,7 @@ function LightSystem.ToggeLights(light_type: LightOptions, state: boolean)
 		Color = GameFolder:GetAttribute(LightType.Color)
 		Sound = ToggleOnSound:Clone()
 	else
-		Color = COLOR_BLACK
+		Color = BLACK_COLOR
 		Sound = ToggleOffSound:Clone()
 	end
 
@@ -174,7 +174,7 @@ function LightSystem.CreateGlow(brightness: number, color: Color3, lifetime: num
 	ColorCorrection.Parent = game.Lighting
 
 	local GlowTweenInfo = TweenInfo.new(lifetime, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
-	local GlowTween = TweenService:Create(ColorCorrection, GlowTweenInfo, { Brightness = 0, TintColor = COLOR_WHITE })
+	local GlowTween = TweenService:Create(ColorCorrection, GlowTweenInfo, { Brightness = 0, TintColor = WHITE_COLOR })
 
 	GlowTween.Completed:Connect(function()
 		ColorCorrection:Destroy()

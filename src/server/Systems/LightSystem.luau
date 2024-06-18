@@ -1,3 +1,4 @@
+--!strict
 --!native
 --!optimize 2
 
@@ -12,7 +13,8 @@ type LightDetails = {
 	Color: string,
 	State: string,
 	Folder: Folder,
-	MaxDelay: number,
+	MaxToggleDelay: number,
+    MaxFlickerDelay: number,
 }
 
 --[ OUR MAIN MODULE FOR THE LIGHT SYSTEM ]--
@@ -40,32 +42,36 @@ local ToggleDetails: { [LightOptions]: LightDetails } = {
 		State = "ChamberLightState",
 		Color = "ChamberLightColor",
 		Folder = GameFolder.ChamberLights,
-		MaxDelay = 2,
+		MaxToggleDelay = 2,
+        MaxFlickerDelay = 0.5
 	},
 
 	Control = {
 		State = "ControlLightState",
 		Color = "ControlLightColor",
 		Folder = GameFolder.ControlRoomLights,
-		MaxDelay = 1,
+		MaxToggleDelay = 1, -- TOGGLE
+        MaxFlickerDelay = 0.5
 	},
 
 	Backup = {
 		State = "BackupLightState",
 		Color = "BackupLightColor",
 		Folder = GameFolder.BackupLights,
-		MaxDelay = 1,
+		MaxToggleDelay = 1, -- TOGGLE
+        MaxFlickerDelay = 0.5
 	},
 }
 
 --[ LOCAL FUNCTIONS ]--
 local function ToggleLightEffects(lightpart: BasePart, color: Color3, sound: Sound, state: boolean)
-    sound.Parent = lightpart
-	sound:Play()
+	sound.Parent = lightpart
 
-	sound.Ended:Connect(function()
+    sound.Ended:Connect(function()
 		sound:Destroy()
 	end)
+
+	sound:Play()
 
 	-- TODO: CAMERA SHAKE!
 
@@ -75,9 +81,15 @@ local function ToggleLightEffects(lightpart: BasePart, color: Color3, sound: Sou
 		if light:IsA("Light") then
 			light.Enabled = state
 		elseif light:IsA("ParticleEmitter") then
-			light.Enabled = true
+			light.Enabled = state
 		end
 	end
+end
+
+local function FlickerLightEffects(lightpart: BasePart, max_delay, after_color)
+    ToggleLightEffects(lightpart, COLOR_BLACK, FLICKER_SOUND:Clone(), false)
+    task.wait(RandomInst:NextNumber(0, max_delay))
+    ToggleLightEffects(lightpart, after_color, FLICKER_SOUND:Clone(), true)
 end
 
 --[ FUNCTIONS ]--
@@ -108,7 +120,29 @@ function LightSystem.ToggeLights(light_type: LightOptions, state: boolean)
 	end
 
 	for index, lightpart in ipairs(LightType.Folder:GetChildren()) do
-		task.delay(RandomInst:NextNumber(0, LightType.MaxDelay), ToggleLightEffects, lightpart, Color, Sound, state)
+        if lightpart:IsA("BasePart") then
+            task.delay(RandomInst:NextNumber(0, LightType.MaxToggleDelay), ToggleLightEffects, lightpart, Color, Sound, state)
+        end
+	end
+end
+
+function LightSystem.FlickerLights(light_type: LightOptions)
+	if ToggleDetails[light_type] == nil then
+		warn("That's not a valid light type!")
+		return
+	end
+
+	local LightType = ToggleDetails[light_type]
+
+    local MaxFlickerDelay = LightType.MaxFlickerDelay
+    local AfterFlickerColor = GameFolder:GetAttribute(LightType.Color)
+
+	for count = 1, 3 do
+		for index, lightpart in ipairs(LightType.Folder:GetChildren()) do
+            if lightpart:IsA("BasePart") then
+                task.delay(RandomInst:NextNumber(0, MaxFlickerDelay), FlickerLightEffects, lightpart, MaxFlickerDelay, AfterFlickerColor)
+            end
+		end
 	end
 end
 
@@ -118,14 +152,16 @@ function LightSystem.CreateGlow(brightness: number, color: Color3, lifetime: num
 	ColorCorrection.Brightness = brightness
 	ColorCorrection.TintColor = color
 
+    ColorCorrection.Parent = game.Lighting
+
 	local GlowTweenInfo = TweenInfo.new(lifetime, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 	local GlowTween = TweenService:Create(ColorCorrection, GlowTweenInfo, { Brightness = 0, TintColor = COLOR_WHITE })
 
-    GlowTween:Play()
-
     GlowTween.Completed:Connect(function()
-        ColorCorrection:Destroy()
-    end)
+		ColorCorrection:Destroy()
+	end)
+
+	GlowTween:Play()
 end
 
 return LightSystem

@@ -148,7 +148,7 @@ function LaserSystem.FlashLaser(laser: Model, state: boolean)
 					FlashTween:Cancel()
 					FlashTween:Destroy()
 
-					TweenService:Create(part, LINEAR_TWEEN, { Color = OldColor })
+					TweenService:Create(part, LINEAR_TWEEN, { Color = OldColor }):Play()
 				end
 			end)
 

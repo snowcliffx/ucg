@@ -33,10 +33,10 @@ local GameFolder = game.Workspace.Game
 local COLOR_BLACK = Color3.new(0, 0, 0)
 local COLOR_WHITE = Color3.new(1, 1, 1)
 
---[ SOUND CONSTANTS ]--
-local TOGGLE_ON_SOUND = ReplicatedStorage.SharedAssets.Audio.Light.ToggleOn
-local TOGGLE_OFF_SOUND = ReplicatedStorage.SharedAssets.Audio.Light.ToggleOff
-local FLICKER_SOUND = ReplicatedStorage.SharedAssets.Audio.Light.Flicker
+--[ SOUNDS ]--
+local ToggleOnSound = ReplicatedStorage.SharedAssets.Audio.Light.ToggleOn
+local ToggleOffSound = ReplicatedStorage.SharedAssets.Audio.Light.ToggleOff
+local FlickerSound = ReplicatedStorage.SharedAssets.Audio.Light.Flicker
 
 --[ OTHER INSTANCES ]--
 local RandomInst = Random.new()
@@ -93,9 +93,9 @@ local function ToggleLightEffects(lightpart: BasePart, color: Color3, sound: Sou
 end
 
 local function FlickerLightEffects(lightpart: BasePart, max_delay, after_color)
-	ToggleLightEffects(lightpart, COLOR_BLACK, FLICKER_SOUND:Clone(), false)
+	ToggleLightEffects(lightpart, COLOR_BLACK, FlickerSound:Clone(), false)
 	task.wait(RandomInst:NextNumber(0, max_delay))
-	ToggleLightEffects(lightpart, after_color, FLICKER_SOUND:Clone(), true)
+	ToggleLightEffects(lightpart, after_color, FlickerSound:Clone(), true)
 end
 
 --[ FUNCTIONS ]--
@@ -119,10 +119,10 @@ function LightSystem.ToggeLights(light_type: LightOptions, state: boolean)
 
 	if state == true then
 		Color = GameFolder:GetAttribute(LightType.Color)
-		Sound = TOGGLE_ON_SOUND:Clone()
+		Sound = ToggleOnSound:Clone()
 	else
 		Color = COLOR_BLACK
-		Sound = TOGGLE_OFF_SOUND:Clone()
+		Sound = ToggleOffSound:Clone()
 	end
 
 	for index, lightpart in ipairs(LightType.Folder:GetChildren()) do

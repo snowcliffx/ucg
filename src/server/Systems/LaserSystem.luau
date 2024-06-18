@@ -60,7 +60,7 @@ function LaserSystem.ToggleLaser(laser: Model, state: boolean)
 	laser:SetAttribute("State", state)
 
 	-- DECLARING VARIABLES EARLY
-	local MainBrightness: {}
+	local MainBrightness
 	local PointBrightness
 
 	-- INITIALIZATION CODE BASED ON STATE

@@ -31,7 +31,8 @@ function ShieldSystem.ToggleBlastShield(state: boolean)
 
 	local PosSign = state and POSITION_DELTA or -POSITION_DELTA
 
-	local ShieldTween = TweenService:Create(BlastShield, SHIELD_TWEEN_INFO, { Position = BlastShield.Position + PosSign })
+	local ShieldTween =
+		TweenService:Create(BlastShield, SHIELD_TWEEN_INFO, { Position = BlastShield.Position + PosSign })
 
 	ShieldTween.Completed:Connect(function()
 		ToggleDebounce = false

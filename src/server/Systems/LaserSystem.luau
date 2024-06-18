@@ -14,7 +14,7 @@ local TweenService = game:GetService("TweenService")
 --[ OUR MAIN MODULE FOR THE LASER SYSTEM ]--
 local LaserSystem = {}
 
---[ CONSTANT TWEENS ]--
+--[ TWEEN CONSTANTS ]--
 local LINEAR_TWEEN = TweenInfo.new(1, Enum.EasingStyle.Linear)
 local TOGGLE_RETRACT_TWEEN = TweenInfo.new(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
 
@@ -24,12 +24,12 @@ local PRIME_COLOR_TWEEN = TweenInfo.new(5, Enum.EasingStyle.Linear)
 local DESTROY_RETRACT_TWEEN = TweenInfo.new(4, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out)
 local DESTROY_COLOR_TWEEN = TweenInfo.new(2, Enum.EasingStyle.Linear)
 
---[ CONSTANT BRIGHTNESS ]--
+--[ BRIGHTNESS CONSTANTS ]--
 local MIN_BRIGHTNESS = { Brightness = 0 }
 local MED_BRIGHTNESS = { Brightness = 5 }
 local MAX_BRIGHTNESS = { Brightness = 10 }
 
---[ CONSTANT COLORS ]--
+--[ COLOR CONSTANTS ]--
 local PRIME_COLOR = Color3.fromRGB(225, 225, 225)
 local DESTROY_COLOR = Color3.fromRGB(225, 65, 0)
 
@@ -60,7 +60,7 @@ function LaserSystem.ToggleLaser(laser: Model, state: boolean)
 	laser:SetAttribute("State", state)
 
 	-- DECLARING VARIABLES EARLY
-	local MainBrightness
+	local MainBrightness: {}
 	local PointBrightness
 
 	-- INITIALIZATION CODE BASED ON STATE

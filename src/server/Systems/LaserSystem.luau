@@ -59,9 +59,6 @@ function LaserSystem.ToggleLaser(laser: Model, state: boolean)
 	-- SET STATE
 	laser:SetAttribute("State", state)
 
-	-- SOME IMPORTANT PARTS
-	local Mechanics = laser.Mechanics
-
 	-- DECLARING VARIABLES EARLY
 	local MainBrightness
 	local PointBrightness
@@ -80,6 +77,9 @@ function LaserSystem.ToggleLaser(laser: Model, state: boolean)
 		MainBrightness = MIN_BRIGHTNESS
 		PointBrightness = MIN_BRIGHTNESS
 	end
+
+	-- FOLDER FOR MOST PARTS BELOW
+	local Mechanics = laser.Mechanics
 
 	-- PLAY CHAMBER BEAM TWEENS [CHAMBER]
 	TweenService:Create(Mechanics.ChamberInnerBeam.Beam0, LINEAR_TWEEN, MainBrightness):Play()

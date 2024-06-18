@@ -92,10 +92,10 @@ local function ToggleLightEffects(lightpart: BasePart, color: Color3, sound: Sou
 	end
 end
 
-local function FlickerLightEffects(lightpart: BasePart, max_delay, after_color)
-	ToggleLightEffects(lightpart, BLACK_COLOR, FlickerSound:Clone(), false)
+local function FlickerLightEffects(lightpart: BasePart, max_delay, color1, color2, curr_state)
+	ToggleLightEffects(lightpart, color1, FlickerSound:Clone(), not curr_state)
 	task.wait(RandomInst:NextNumber(0, max_delay))
-	ToggleLightEffects(lightpart, after_color, FlickerSound:Clone(), true)
+	ToggleLightEffects(lightpart, color2, FlickerSound:Clone(), curr_state)
 end
 
 --[ FUNCTIONS ]--
@@ -139,7 +139,7 @@ function LightSystem.ToggeLights(light_type: LightOptions, state: boolean)
 	end
 end
 
-function LightSystem.FlickerLights(light_type: LightOptions)
+function LightSystem.FlickerLights(light_type: LightOptions, curr_state: boolean)
 	if ToggleDetails[light_type] == nil then
 		warn("That's not a valid light type!")
 		return
@@ -148,7 +148,18 @@ function LightSystem.FlickerLights(light_type: LightOptions)
 	local LightType = ToggleDetails[light_type]
 
 	local MaxFlickerDelay = LightType.MaxFlickerDelay
-	local AfterFlickerColor = GameFolder:GetAttribute(LightType.Color)
+	local NormalColor = GameFolder:GetAttribute(LightType.Color)
+
+	local Color1: Color3
+	local Color2: Color3
+
+	if curr_state == true then
+		Color1 = BLACK_COLOR
+		Color2 = NormalColor
+	else
+		Color1 = NormalColor
+		Color2 = BLACK_COLOR
+	end
 
 	for count = 1, 3 do
 		for index, lightpart in ipairs(LightType.Folder:GetChildren()) do
@@ -158,7 +169,9 @@ function LightSystem.FlickerLights(light_type: LightOptions)
 					FlickerLightEffects,
 					lightpart,
 					MaxFlickerDelay,
-					AfterFlickerColor
+					Color1,
+					Color2,
+					curr_state
 				)
 			end
 		end

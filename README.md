@@ -4,7 +4,7 @@
 - LaserSystem: Done | Tested | No Bugs.
 - LightSystem: Done | Tested | No Bugs.
 - ReactorSystem: Unfinished.
-- ShieldSystem: Unfinished.
+- ShieldSystem: Done | Not Tested.
 - RegenSystem: Unfinished.
 - MainHandler: Unfinished.
 - PlayerLogic: Unfinished.

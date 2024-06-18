@@ -2,6 +2,12 @@
 --!native
 --!optimize 2
 
+--[[
+	DISCLAIMER:
+	I WAS ABLE TO USE STRICT TYPECHECKING IN THIS ONE UNLIKE LASERSYSTEM.
+	THE LOCATIONS OF ATTROBUTES ARE SUBJECT TO CHANGE, AND SO IS THE "TOGGLEDETAILS" TABLE.
+]]
+
 --[ SERVICES ]--
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")

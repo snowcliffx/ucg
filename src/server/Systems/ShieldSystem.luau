@@ -29,13 +29,7 @@ function ShieldSystem.ToggleBlastShield(state: boolean)
 	ToggleDebounce = true
 	GameFolder:SetAttribute("ShieldState", state)
 
-	local PosSign: Vector3
-
-    if state == true then
-        PosSign = POSITION_DELTA
-    else
-        PosSign = -POSITION_DELTA
-    end
+	local PosSign = state and POSITION_DELTA or -POSITION_DELTA
 
 	local ShieldTween = TweenService:Create(BlastShield, SHIELD_TWEEN_INFO, { Position = BlastShield.Position + PosSign })
 

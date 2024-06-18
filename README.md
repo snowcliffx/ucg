@@ -2,7 +2,7 @@
 # snow's epic UCG progress
 
 - LaserSystem: Done | Tested | No Bugs.
-- LightSystem: Done | Not Tested.
+- LightSystem: Done | Tested | No Bugs.
 - ReactorSystem: Unfinished.
 - ShieldSystem: Unfinished.
 - RegenSystem: Unfinished.

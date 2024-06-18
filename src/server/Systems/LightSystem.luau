@@ -26,7 +26,7 @@ type LightDetails = {
 --[ OUR MAIN MODULE FOR THE LIGHT SYSTEM ]--
 local LightSystem = {}
 
---[ GAME FOLDERS ]--
+--[ GAME FOLDER ]--
 local GameFolder = game.Workspace.Game
 
 --[ COLOR CONSTANTS ]--

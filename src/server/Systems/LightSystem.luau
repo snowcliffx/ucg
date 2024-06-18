@@ -99,7 +99,7 @@ local function FlickerLightEffects(lightpart: BasePart, max_delay, color1, color
 end
 
 --[ FUNCTIONS ]--
-function LightSystem.ToggeLights(light_type: LightOptions, state: boolean)
+function LightSystem.ToggleLights(light_type: LightOptions, state: boolean)
 	if ToggleDetails[light_type] == nil then
 		warn("That's not a valid light type!")
 		return

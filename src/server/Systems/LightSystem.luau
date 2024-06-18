@@ -33,8 +33,8 @@ local FLICKER_SOUND = ReplicatedStorage.SharedAssets.Audio.Light.Flicker
 --[ OTHER INSTANCES ]--
 local RandomInst = Random.new()
 
---[ INFORMATION FOR EACH LIGHT TOGGLE THING IDK WHAT TO CALL IT ]--
---[ ALSO, PREFERABLY DO NOT CHANGE "STATE" AND "COLOR" FOR ANY OF THEM ]--
+--[ INFORMATION FOR EACH LIGHT TOGGLE ]--
+--[ PREFERABLY DO NOT CHANGE "STATE" AND "COLOR" FOR ANY OF THEM ]--
 local ToggleDetails: { [LightOptions]: LightDetails } = {
 	Chamber = {
 		State = "ChamberLightState",

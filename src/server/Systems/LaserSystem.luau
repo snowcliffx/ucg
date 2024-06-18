@@ -110,6 +110,14 @@ function LaserSystem.ToggleLaser(laser: Model, state: boolean)
 	Mechanics.LaserTopBeam.BottomParticles.Particles3.Enabled = state
 end
 
+function LaserSystem.LaserStartup(laser: Model)
+	for index, part in ipairs(laser.Mechanics.Vents:GetChildren()) do
+		part.ParticleEmitter.Enabled = true
+	end
+
+	laser.Mechanics.LaserTopBeam.ShieldParticles.Particles1.Enabled = true
+end
+
 function LaserSystem.ChangeColor(laser: Model, color: Color3, tweeninfo: TweenInfo)
 	-- TWEEN COLOR FOR EVERY NEON PART
 	for index, part in ipairs(laser.Mechanics.Neons) do

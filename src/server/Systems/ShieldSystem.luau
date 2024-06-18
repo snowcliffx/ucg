@@ -46,3 +46,7 @@ function ShieldSystem.ToggleBlastShield(state: boolean)
 		end
 	end
 end
+
+function ShieldSystem.DestroyBlastShield()
+
+end

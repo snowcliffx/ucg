@@ -59,7 +59,8 @@ local ToggleDetails: { [LightOptions]: LightDetails } = {
 }
 
 --[ LOCAL FUNCTIONS ]--
-local function ToggleLightEffects(part: BasePart, color: Color3, sound: Sound, state: boolean)
+local function ToggleLightEffects(lightpart: BasePart, color: Color3, sound: Sound, state: boolean)
+    sound.Parent = lightpart
 	sound:Play()
 
 	sound.Ended:Connect(function()
@@ -68,9 +69,9 @@ local function ToggleLightEffects(part: BasePart, color: Color3, sound: Sound, s
 
 	-- TODO: CAMERA SHAKE!
 
-	part.Color = color
+	lightpart.Color = color
 
-	for index, light in ipairs(part:GetDescendants()) do
+	for index, light in ipairs(lightpart:GetDescendants()) do
 		if light:IsA("Light") then
 			light.Enabled = state
 		elseif light:IsA("ParticleEmitter") then
@@ -80,7 +81,7 @@ local function ToggleLightEffects(part: BasePart, color: Color3, sound: Sound, s
 end
 
 --[ FUNCTIONS ]--
-function LightSystem.ToggeLights(state: boolean, light_type: LightOptions)
+function LightSystem.ToggeLights(light_type: LightOptions, state: boolean)
 	if ToggleDetails[light_type] == nil then
 		warn("That's not a valid light type!")
 		return

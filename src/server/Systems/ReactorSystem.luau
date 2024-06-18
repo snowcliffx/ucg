@@ -24,6 +24,7 @@ local Lasers = LaserStorage:GetChildren()
 
 --[ FUNCTIONS ]--
 function ReactorSystem.Initialize()
+    -- TODO: ANNOUNCE
     for index, laser in ipairs(Lasers) do
         LaserSystem.PrimeLaser(laser)
     end
@@ -33,6 +34,6 @@ function ReactorSystem.Initialize()
     GameFolder.Reactor.ChamberParticles.Idle.Enabled = true
 
     for index, laser in ipairs(Lasers) do
-        
+
     end
 end

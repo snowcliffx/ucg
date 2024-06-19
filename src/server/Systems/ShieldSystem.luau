@@ -66,7 +66,7 @@ function ShieldSystem.ToggleBlastShield(state: boolean)
 end
 
 function ShieldSystem.DestroyBlastShield()
-	if GameFolder:GetAttribute("ShieldState") == false or GameFolder:GetAttribute("ShieldDestroyed") == true then
+	if GameFolder:GetAttribute("ShieldDestroyed") == true then
 		return
 	end
 

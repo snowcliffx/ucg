@@ -90,13 +90,13 @@ end)
 GameFolder:GetAttributeChangedSignal("ShieldTemperature"):Connect(function()
 	local value: number = GameFolder:GetAttribute("ShieldTemperature")
 
-	ShieldProperties.Temperature.TemperatureBar.TemperatureValue.Text = value .. "°C"
+	ShieldProperties.Temperature.TemperatureBar.TemperatureValue.Text= value .. "°C"
 end)
 
 GameFolder:GetAttributeChangedSignal("ReactorPower"):Connect(function()
 	local value: number = GameFolder:GetAttribute("ReactorPower")
 
-	PowerProperties.Power.PowerBar.PowerValue = value
+	PowerProperties.Power.PowerBar.PowerValue.Text = value
 
 	if value >= 5 and HighPower == false then
 		HighPower = true
@@ -116,5 +116,5 @@ end)
 GameFolder:GetAttributeChangedSignal("CoolantPower"):Connect(function()
 	local value: number = GameFolder:GetAttribute("CoolantPower")
 
-	CoolingProperties.Coolant.CoolantBar.CoolantValue = value
+	CoolingProperties.Coolant.CoolantBar.CoolantValue.Text = value
 end)

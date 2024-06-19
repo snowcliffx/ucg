@@ -16,33 +16,33 @@ local LowIntegrity = false
 local HighPower = false
 
 local IntegrityTweens = {
-    LowIntegrity = {
-        TweenService:Create(ShieldProperties.Integrity.IntegBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(83, 0, 0) }),
+	LowIntegrity = {
+		TweenService:Create(ShieldProperties.Integrity.IntegBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(83, 0, 0) }),
 		TweenService:Create(ShieldProperties.Integrity.IntegBar.Frame, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(255, 0, 0) }),
 		TweenService:Create(ShieldProperties.Integrity.IntegBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(177, 0, 0) }),
 		TweenService:Create(ShieldProperties.Integrity.TextLabel, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(198, 0, 0) }),
-    },
+	},
 
-    HighIntegrity = {
-        TweenService:Create(ShieldProperties.Integrity.IntegBar, QUAD_TWEEN, {BackgroundColor3 = Color3.fromRGB(61, 61, 61)}),
-        TweenService:Create(ShieldProperties.Integrity.IntegBar.Frame, QUAD_TWEEN, {BackgroundColor3 = Color3.fromRGB(0, 127, 0)}),
-        TweenService:Create(ShieldProperties.Integrity.IntegBar.UIStroke, QUAD_TWEEN, {Color = Color3.fromRGB(112, 112, 112)}),
-        TweenService:Create(ShieldProperties.Integrity.TextLabel, QUAD_TWEEN, {TextColor3 = Color3.fromRGB(195, 195, 195)}),
-    }
+	HighIntegrity = {
+		TweenService:Create(ShieldProperties.Integrity.IntegBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(61, 61, 61) }),
+		TweenService:Create(ShieldProperties.Integrity.IntegBar.Frame, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(0, 127, 0) }),
+		TweenService:Create(ShieldProperties.Integrity.IntegBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(112, 112, 112) }),
+		TweenService:Create(ShieldProperties.Integrity.TextLabel, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(195, 195, 195) }),
+	},
 }
 
 local PowerTweens = {
-    HighPower = {
-        TweenService:Create(PowerProperties.Status.tempBar, QUAD_TWEEN, {BackgroundColor3 = Color3.fromRGB(83, 0, 0)}),
-        TweenService:Create(PowerProperties.Status.tempBar.TextLabel, QUAD_TWEEN, {TextColor3 = Color3.fromRGB(198, 0, 0)}),
-        TweenService:Create(PowerProperties.Status.tempBar.UIStroke, QUAD_TWEEN, {Color = Color3.fromRGB(177, 0, 0)}),
-    },
+	HighPower = {
+		TweenService:Create(PowerProperties.Status.tempBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(83, 0, 0) }),
+		TweenService:Create(PowerProperties.Status.tempBar.TextLabel, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(198, 0, 0) }),
+		TweenService:Create(PowerProperties.Status.tempBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(177, 0, 0) }),
+	},
 
-    LowPower = {
-        TweenService:Create(PowerProperties.Status.tempBar, QUAD_TWEEN, {BackgroundColor3 = Color3.fromRGB(61, 61, 61)}),
-	    TweenService:Create(PowerProperties.Status.tempBar.TextLabel, QUAD_TWEEN, {TextColor3 = Color3.fromRGB(195, 195, 195)}),
-	    TweenService:Create(PowerProperties.Status.tempBar.UIStroke, QUAD_TWEEN, {Color = Color3.fromRGB(112, 112, 112)}),
-    }
+	LowPower = {
+		TweenService:Create(PowerProperties.Status.tempBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(61, 61, 61) }),
+		TweenService:Create(PowerProperties.Status.tempBar.TextLabel, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(195, 195, 195) }),
+		TweenService:Create(PowerProperties.Status.tempBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(112, 112, 112) }),
+	},
 }
 
 GameFolder:GetAttributeChangedSignal("CoreTemperature"):Connect(function(value: number)
@@ -60,16 +60,15 @@ GameFolder:GetAttributeChangedSignal("ShieldIntegrity"):Connect(function(value: 
 	if value <= 35 and LowIntegrity == false then
 		LowIntegrity = true
 
-        for index, tween in IntegrityTweens.LowIntegrity do
-            tween:Play()
-        end
-
+		for index, tween in IntegrityTweens.LowIntegrity do
+			tween:Play()
+		end
 	elseif value > 35 and LowIntegrity == true then
-        LowIntegrity = false
+		LowIntegrity = false
 
-        for index, tween in IntegrityTweens.HighIntegrity do
-            tween:Play()
-        end
+		for index, tween in IntegrityTweens.HighIntegrity do
+			tween:Play()
+		end
 	end
 end)
 
@@ -80,20 +79,19 @@ end)
 GameFolder:GetAttributeChangedSignal("ReactorPower"):Connect(function(value: number)
 	PowerProperties.Status.tempBar.TextLabel.Text = value
 
-    if value >= 5 and HighPower == false then
-        HighPower = true
+	if value >= 5 and HighPower == false then
+		HighPower = true
 
-        for index, tween in PowerTweens.HighPower do
-            tween:Play()
-        end
+		for index, tween in PowerTweens.HighPower do
+			tween:Play()
+		end
+	elseif value < 5 and HighPower == true then
+		HighPower = false
 
-    elseif value < 5 and HighPower == true then
-        HighPower = false
-
-        for index, tween in PowerTweens.LowPower do
-            tween:Play()
-        end
-    end
+		for index, tween in PowerTweens.LowPower do
+			tween:Play()
+		end
+	end
 end)
 
 GameFolder:GetAttributeChangedSignal("CoolantPower"):Connect(function(value: number)

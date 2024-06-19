@@ -45,15 +45,21 @@ local PowerTweens = {
 	},
 }
 
-GameFolder:GetAttributeChangedSignal("CoreTemperature"):Connect(function(value: number)
+GameFolder:GetAttributeChangedSignal("CoreTemperature"):Connect(function()
+	local value: number = GameFolder:GetAttribute("CoreTemperature")
+
 	ReactorProperties.Temperature.tempBar.TextLabel.Text = value .. "°C"
 end)
 
-GameFolder:GetAttributeChangedSignal("ReactorStatus"):Connect(function(value: string)
+GameFolder:GetAttributeChangedSignal("ReactorStatus"):Connect(function()
+	local value: string = GameFolder:GetAttribute("ReactorStatus")
+
 	ReactorProperties.Status.tempBar.TextLabel.Text = value
 end)
 
-GameFolder:GetAttributeChangedSignal("ShieldIntegrity"):Connect(function(value: number)
+GameFolder:GetAttributeChangedSignal("ShieldIntegrity"):Connect(function()
+	local value: number = GameFolder:GetAttribute("ShieldIntegrity")
+
 	ShieldProperties.Integrity.TextLabel.Text = "Shield Integrity: " .. math.round(value) .. "%"
 	ShieldProperties.Integrity.IntegBar.Frame:TweenSize(UDim2.fromScale(value / 100, 1), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.5)
 
@@ -72,11 +78,15 @@ GameFolder:GetAttributeChangedSignal("ShieldIntegrity"):Connect(function(value: 
 	end
 end)
 
-GameFolder:GetAttributeChangedSignal("ShieldTemperature"):Connect(function(value: number)
+GameFolder:GetAttributeChangedSignal("ShieldTemperature"):Connect(function()
+	local value: number = GameFolder:GetAttribute("ShieldTemperature")
+
 	ShieldProperties.Integrity.TextLabel.Text = value .. "°C"
 end)
 
-GameFolder:GetAttributeChangedSignal("ReactorPower"):Connect(function(value: number)
+GameFolder:GetAttributeChangedSignal("ReactorPower"):Connect(function()
+	local value: number = GameFolder:GetAttribute("ReactorPower")
+
 	PowerProperties.Status.tempBar.TextLabel.Text = value
 
 	if value >= 5 and HighPower == false then
@@ -94,6 +104,8 @@ GameFolder:GetAttributeChangedSignal("ReactorPower"):Connect(function(value: num
 	end
 end)
 
-GameFolder:GetAttributeChangedSignal("CoolantPower"):Connect(function(value: number)
+GameFolder:GetAttributeChangedSignal("CoolantPower"):Connect(function()
+	local value: number = GameFolder:GetAttribute("CoolantPower")
+
 	CoolingProperties.Status.tempBar.TextLabel.Text = value
 end)

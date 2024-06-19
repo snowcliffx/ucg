@@ -1,20 +1,27 @@
+--[ SERVICES ]--
 local TweenService = game:GetService("TweenService")
 
+--[ GAME FOLDER ]--
 local GameFolder = game.Workspace.Game
 
+--[ SCREENS ]--
 local StatusScreen = GameFolder.Controls.StatusScreen
 local MainScreen = StatusScreen.MainScreen
 
+--[ PROPERTIES ]--
 local CoolingProperties = MainScreen.MainFrame.CoolingProperties
 local PowerProperties = MainScreen.MainFrame.PowerProperties
 local ReactorProperties = MainScreen.MainFrame.ReactorProperties
 local ShieldProperties = MainScreen.MainFrame.ShieldProperties
 
+--[ TWEEN CONSTANTS ]--
 local QUAD_TWEEN = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
+--[ VARIABLES ]--
 local LowIntegrity = false
 local HighPower = false
 
+--[ TWEENS FOR EACH INTEGRITY/POWER STATE ]--
 local IntegrityTweens = {
 	LowIntegrity = {
 		TweenService:Create(ShieldProperties.Integrity.IntegBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(83, 0, 0) }),
@@ -45,6 +52,7 @@ local PowerTweens = {
 	},
 }
 
+--[ UPDATING VALUES ]--
 GameFolder:GetAttributeChangedSignal("CoreTemperature"):Connect(function()
 	local value: number = GameFolder:GetAttribute("CoreTemperature")
 

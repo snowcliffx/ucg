@@ -7,6 +7,8 @@
 - ShieldSystem: In Progress | Semi-Tested | No Bugs (so far).
 - RegenSystem: Unfinished.
 - StatusHandler: Done | Tested | No Bugs.
+- InitializeHandler: Unfinished.
+- PrimeHandler: Unfinished.
 - MainHandler: Unfinished.
 - PlayerLogic: Unfinished.
 - DataStore(?): Unfinished.

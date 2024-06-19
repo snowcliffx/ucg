@@ -119,7 +119,7 @@ function ReactorSystem.Initialize()
 
 	task.wait(1)
 
-	-- TODO: SHOCKWAVE
+	ReactorSystem.ShockWave(true)
 
 	GameFolder:SetAttribute("ReactorPower", 10)
 
@@ -154,7 +154,7 @@ function ReactorSystem.Initialize()
 
 	task.wait(5)
 
-	ReactorSystem.ShockWave(true)
+	-- TODO: CAMERA SHAKE
 
 	GameFolder:SetAttribute("ReactorPower", 1)
 	GameFolder:SetAttribute("CoolantPower", 1)

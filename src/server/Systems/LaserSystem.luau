@@ -40,19 +40,11 @@ local DESTROY_COLOR = Color3.fromRGB(225, 65, 0)
 
 --[ FUNCTIONS ]--
 function LaserSystem.RetractLaser(laser: Model, amount: number, tweeninfo: TweenInfo)
-	TweenService:Create(
-		laser.Mechanics.LaserAnchor,
-		tweeninfo,
-		{ CFrame = laser.Mechanics.LaserAnchor.CFrame * CFrame.new(Vector3.new(0, -amount, 0)) }
-	):Play()
+	TweenService:Create(laser.Mechanics.LaserAnchor, tweeninfo, { CFrame = laser.Mechanics.LaserAnchor.CFrame * CFrame.new(Vector3.new(0, -amount, 0)) }):Play()
 end
 
 function LaserSystem.ExtendLaser(laser: Model, amount: number, tweeninfo: TweenInfo)
-	TweenService:Create(
-		laser.Mechanics.LaserAnchor,
-		tweeninfo,
-		{ CFrame = laser.Mechanics.LaserAnchor.CFrame * CFrame.new(Vector3.new(0, amount, 0)) }
-	):Play()
+	TweenService:Create(laser.Mechanics.LaserAnchor, tweeninfo, { CFrame = laser.Mechanics.LaserAnchor.CFrame * CFrame.new(Vector3.new(0, amount, 0)) }):Play()
 end
 
 function LaserSystem.ToggleLaser(laser: Model, state: boolean)

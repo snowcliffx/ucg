@@ -127,14 +127,7 @@ function LightSystem.ToggleLights(light_type: LightOptions, state: boolean)
 
 	for index, lightpart in ipairs(LightType.Folder:GetChildren()) do
 		if lightpart:IsA("BasePart") then
-			task.delay(
-				RandomInst:NextNumber(0, LightType.MaxToggleDelay),
-				ToggleLightEffects,
-				lightpart,
-				Color,
-				Sound,
-				state
-			)
+			task.delay(RandomInst:NextNumber(0, LightType.MaxToggleDelay), ToggleLightEffects, lightpart, Color, Sound, state)
 		end
 	end
 end
@@ -164,15 +157,7 @@ function LightSystem.FlickerLights(light_type: LightOptions, curr_state: boolean
 	for count = 1, 3 do
 		for index, lightpart in ipairs(LightType.Folder:GetChildren()) do
 			if lightpart:IsA("BasePart") then
-				task.delay(
-					RandomInst:NextNumber(0, MaxFlickerDelay),
-					FlickerLightEffects,
-					lightpart,
-					MaxFlickerDelay,
-					Color1,
-					Color2,
-					curr_state
-				)
+				task.delay(RandomInst:NextNumber(0, MaxFlickerDelay), FlickerLightEffects, lightpart, MaxFlickerDelay, Color1, Color2, curr_state)
 			end
 		end
 	end

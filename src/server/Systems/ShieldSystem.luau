@@ -14,7 +14,7 @@ local BlastShield = GameFolder.Controls.BlastShield
 local ReactorStorage = GameFolder.Reactor
 
 --[ TWEEN CONSTANTS ]--
-local LINEAR_TWEEN = TweenInfo.new(1, Enum.EasingStyle.Linear)
+local _LINEAR_TWEEN = TweenInfo.new(1, Enum.EasingStyle.Linear)
 local BLAST_SHIELD_TWEEN = TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
 local DEFAULT_SHIELD_TWEEN = TweenInfo.new(3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, 1, false, 3)
 
@@ -36,11 +36,7 @@ function ShieldSystem.InitializeShield()
 end
 
 function ShieldSystem.ToggleBlastShield(state: boolean)
-	if
-		state == GameFolder:GetAttribute("ShieldState")
-		or GameFolder:GetAttribute("ShieldDestroyed") == true
-		or ToggleDebounce == true
-	then
+	if state == GameFolder:GetAttribute("ShieldState") or GameFolder:GetAttribute("ShieldDestroyed") == true or ToggleDebounce == true then
 		return
 	end
 
@@ -49,8 +45,7 @@ function ShieldSystem.ToggleBlastShield(state: boolean)
 
 	local PosSign = state and POSITION_DELTA or -POSITION_DELTA
 
-	local ShieldTween =
-		TweenService:Create(BlastShield, BLAST_SHIELD_TWEEN, { Position = BlastShield.Position + PosSign })
+	local ShieldTween = TweenService:Create(BlastShield, BLAST_SHIELD_TWEEN, { Position = BlastShield.Position + PosSign })
 
 	ShieldTween.Completed:Connect(function()
 		ToggleDebounce = false

@@ -85,6 +85,8 @@ function LaserSystem.ToggleLaser(laser: Model, state: boolean)
 
 	-- FOLDER FOR MOST PARTS BELOW
 	local Mechanics = laser.Mechanics
+	print(MainBrightness)
+	print(PointBrightness)
 
 	-- PLAY CHAMBER BEAM TWEENS [CHAMBER]
 	TweenService:Create(Mechanics.ChamberInnerBeam.Beam0, LINEAR_TWEEN, MainBrightness):Play()
@@ -106,8 +108,8 @@ function LaserSystem.ToggleLaser(laser: Model, state: boolean)
 	end
 
 	-- PLAY MAIN TOP BEAM TWEENS [MAIN]
-	TweenService:Create(Mechanics.LaserTopBeam.Beam0, LINEAR_TWEEN, MainBrightness)
-	TweenService:Create(Mechanics.LaserTopBeam.Beam1, LINEAR_TWEEN, MainBrightness)
+	TweenService:Create(Mechanics.LaserTopBeam.Beam0, LINEAR_TWEEN, MainBrightness):Play()
+	TweenService:Create(Mechanics.LaserTopBeam.Beam1, LINEAR_TWEEN, MainBrightness):Play()
 
 	-- TOGGLE PARTICLE EMITTERS [MAIN]
 	Mechanics.LaserTopBeam.BottomParticles.Particles1.Enabled = state
@@ -158,7 +160,7 @@ function LaserSystem.ToggleVents(laser: Model, state: boolean)
 	end
 
 	laser.Mechanics.LaserTopBeam.ShieldParticles.Particles1.Enabled = state
-	laser:SetAttribute("Flashing", state)
+	LaserSystem.FlashLaser(laser, state)
 end
 
 function LaserSystem.ToggleBottomCharge(laser: Model, state: boolean)

@@ -196,7 +196,7 @@ function LaserSystem.PrimeLaser(laser: Model)
 	laser:SetAttribute("Primed", true)
 
 	-- PLAY LASER EXTENSION AUDIO
-	laser.Mechanics.LaserAnchor.LaserExtensions:Play()
+	laser.Mechanics.LaserAnchor.LaserExtension:Play()
 
 	-- COLOR AND PARTICLE TWEENS
 	LaserSystem.ExtendLaser(laser, 15, PRIME_EXTEND_TWEEN)

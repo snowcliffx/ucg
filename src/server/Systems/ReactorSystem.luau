@@ -177,3 +177,5 @@ function ReactorSystem.Initialize()
 	GameFolder:SetAttribute("Online", true)
 	GameFolder:SetAttribute("ReactorStatus", "ONLINE")
 end
+
+return ReactorSystem

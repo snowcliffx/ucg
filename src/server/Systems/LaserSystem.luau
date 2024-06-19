@@ -165,7 +165,7 @@ function LaserSystem.FlashLaser(laser: Model, state: boolean)
 end
 
 function LaserSystem.ToggleVents(laser: Model, state: boolean)
-	for index, vent in ipairs(laser.Vents:GetChildren()) do
+	for index, vent in ipairs(laser.Mechanics.Vents:GetChildren()) do
 		vent.ParticleEmitter.Enabled = state
 	end
 

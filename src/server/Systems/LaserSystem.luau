@@ -164,6 +164,21 @@ function LaserSystem.FlashLaser(laser: Model, state: boolean)
 	end
 end
 
+function LaserSystem.ToggleVents(laser: Model, state: boolean)
+	for index, vent in ipairs(laser.Vents:GetChildren()) do
+		vent.ParticleEmitter.Enabled = state
+	end
+
+	laser.Mechanics.LaserTopBeam.ShieldParticles.Particles1.Enabled = state
+	laser:SetAttribute("Flashing", state)
+end
+
+function LaserSystem.ToggleBottomCharge(laser: Model, state: boolean)
+	for index, particle in pairs(laser.Mechanics.LaserTopBeam.BottomParticlesCharge:GetChildren()) do
+		particle.Enabled = state
+	end
+end
+
 function LaserSystem.ChangeColor(laser: Model, color: Color3, tweeninfo: TweenInfo)
 	-- TWEEN COLOR FOR EVERY NEON PART
 	for index, part in ipairs(laser.Mechanics.Neons:GetChildren()) do

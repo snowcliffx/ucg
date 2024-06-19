@@ -40,12 +40,6 @@ local DESTROY_COLOR = Color3.fromRGB(225, 65, 0)
 
 --[ FUNCTIONS ]--
 function LaserSystem.RetractLaser(laser: Model, amount: number, tweeninfo: TweenInfo)
-	if laser:GetAttribute("Extended") == false then
-		return
-	end
-
-	laser:SetAttribute("Extended", false)
-
 	TweenService:Create(
 		laser.Mechanics.LaserAnchor,
 		tweeninfo,
@@ -54,12 +48,6 @@ function LaserSystem.RetractLaser(laser: Model, amount: number, tweeninfo: Tween
 end
 
 function LaserSystem.ExtendLaser(laser: Model, amount: number, tweeninfo: TweenInfo)
-	if laser:GetAttribute("Extended") == true then
-		return
-	end
-
-	laser:SetAttribute("Extended", true)
-
 	TweenService:Create(
 		laser.Mechanics.LaserAnchor,
 		tweeninfo,

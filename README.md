@@ -6,7 +6,7 @@
 - ReactorSystem: Done | Tested | No Bugs.
 - ShieldSystem: In Progress | Semi-Tested | No Bugs (so far).
 - RegenSystem: Unfinished.
-- StatusHandler: Done | Not Tested.
+- StatusHandler: Done | Tested | No Bugs.
 - MainHandler: Unfinished.
 - PlayerLogic: Unfinished.
 - DataStore(?): Unfinished.

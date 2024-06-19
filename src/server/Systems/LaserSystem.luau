@@ -77,8 +77,6 @@ function LaserSystem.ToggleLaser(laser: Model, state: boolean)
 
 	-- FOLDER FOR MOST PARTS BELOW
 	local Mechanics = laser.Mechanics
-	print(MainBrightness)
-	print(PointBrightness)
 
 	-- PLAY CHAMBER BEAM TWEENS [CHAMBER]
 	TweenService:Create(Mechanics.ChamberInnerBeam.Beam0, LINEAR_TWEEN, MainBrightness):Play()

@@ -24,31 +24,31 @@ local HighPower = false
 --[ TWEENS FOR EACH INTEGRITY/POWER STATE ]--
 local IntegrityTweens = {
 	LowIntegrity = {
-		TweenService:Create(ShieldProperties.Integrity.IntegBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(83, 0, 0) }),
-		TweenService:Create(ShieldProperties.Integrity.IntegBar.Frame, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(255, 0, 0) }),
-		TweenService:Create(ShieldProperties.Integrity.IntegBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(177, 0, 0) }),
-		TweenService:Create(ShieldProperties.Integrity.TextLabel, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(198, 0, 0) }),
+		TweenService:Create(ShieldProperties.Integrity.IntegrityBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(83, 0, 0) }),
+		TweenService:Create(ShieldProperties.Integrity.IntegrityBar.FillBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(255, 0, 0) }),
+		TweenService:Create(ShieldProperties.Integrity.Title, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(198, 0, 0) }),
+		TweenService:Create(ShieldProperties.Integrity.IntegrityBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(177, 0, 0) }),
 	},
 
 	HighIntegrity = {
-		TweenService:Create(ShieldProperties.Integrity.IntegBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(61, 61, 61) }),
-		TweenService:Create(ShieldProperties.Integrity.IntegBar.Frame, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(0, 127, 0) }),
-		TweenService:Create(ShieldProperties.Integrity.IntegBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(112, 112, 112) }),
-		TweenService:Create(ShieldProperties.Integrity.TextLabel, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(195, 195, 195) }),
+		TweenService:Create(ShieldProperties.Integrity.IntegrityBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(61, 61, 61) }),
+		TweenService:Create(ShieldProperties.Integrity.IntegrityBar.FillBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(0, 127, 0) }),
+		TweenService:Create(ShieldProperties.Integrity.Title, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(195, 195, 195) }),
+		TweenService:Create(ShieldProperties.Integrity.IntegrityBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(112, 112, 112) }),
 	},
 }
 
 local PowerTweens = {
 	HighPower = {
-		TweenService:Create(PowerProperties.Status.tempBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(83, 0, 0) }),
-		TweenService:Create(PowerProperties.Status.tempBar.TextLabel, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(198, 0, 0) }),
-		TweenService:Create(PowerProperties.Status.tempBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(177, 0, 0) }),
+		TweenService:Create(PowerProperties.Power.PowerBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(83, 0, 0) }),
+		TweenService:Create(PowerProperties.Power.PowerBar.PowerValue, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(198, 0, 0) }),
+		TweenService:Create(PowerProperties.Power.PowerBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(177, 0, 0) }),
 	},
 
 	LowPower = {
-		TweenService:Create(PowerProperties.Status.tempBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(61, 61, 61) }),
-		TweenService:Create(PowerProperties.Status.tempBar.TextLabel, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(195, 195, 195) }),
-		TweenService:Create(PowerProperties.Status.tempBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(112, 112, 112) }),
+		TweenService:Create(PowerProperties.Power.PowerBar, QUAD_TWEEN, { BackgroundColor3 = Color3.fromRGB(61, 61, 61) }),
+		TweenService:Create(PowerProperties.Power.PowerBar.PowerValue, QUAD_TWEEN, { TextColor3 = Color3.fromRGB(195, 195, 195) }),
+		TweenService:Create(PowerProperties.Power.PowerBar.UIStroke, QUAD_TWEEN, { Color = Color3.fromRGB(112, 112, 112) }),
 	},
 }
 

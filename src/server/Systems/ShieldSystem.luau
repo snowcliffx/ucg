@@ -16,7 +16,7 @@ local ReactorStorage = GameFolder.Reactor
 --[ TWEEN CONSTANTS ]--
 local _LINEAR_TWEEN = TweenInfo.new(1, Enum.EasingStyle.Linear)
 local BLAST_SHIELD_TWEEN = TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
-local DEFAULT_SHIELD_TWEEN = TweenInfo.new(3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, 1, false, 3)
+local DEFAULT_SHIELD_TWEEN = TweenInfo.new(3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, nil, false, 3)
 
 --[ VECTOR CONSTANTS ]--
 local POSITION_DELTA = Vector3.new(0, 15, 0)

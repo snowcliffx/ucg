@@ -37,7 +37,7 @@ function ShieldSystem.InitializeShield()
 end
 
 function ShieldSystem.ToggleBlastShield(state: boolean)
-	if state == GameFolder:GetAttribute("BlastShieldState") or GameFolder:GetAttribute("ShieldDestroyed") == true or ToggleDebounce == true then
+	if state == GameFolder:GetAttribute("BlastShieldState") or GameFolder:GetAttribute("BlastShieldDestroyed") == true or ToggleDebounce == true then
 		return
 	end
 
@@ -62,11 +62,11 @@ function ShieldSystem.ToggleBlastShield(state: boolean)
 end
 
 function ShieldSystem.DestroyBlastShield()
-	if GameFolder:GetAttribute("ShieldDestroyed") == true then
+	if GameFolder:GetAttribute("BlastShieldDestroyed") == true then
 		return
 	end
 
-	GameFolder:SetAttribute("ShieldDestroyed", true)
+	GameFolder:SetAttribute("BlastShieldDestroyed", true)
 
 	ReactorStorage.Main.Beam.Main.Enabled = true
 	ReactorStorage.Main.Beam.Main2.Enabled = true

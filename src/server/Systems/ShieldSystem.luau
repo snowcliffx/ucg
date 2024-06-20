@@ -24,6 +24,7 @@ local POSITION_DELTA = Vector3.new(0, 15, 0)
 --[ VARIABLES ]--
 local ToggleDebounce = false
 
+--[ FUNCTIONS ]--
 function ShieldSystem.InitializeShield()
 	task.spawn(function()
 		for count = 1, 10 do
@@ -36,12 +37,12 @@ function ShieldSystem.InitializeShield()
 end
 
 function ShieldSystem.ToggleBlastShield(state: boolean)
-	if state == GameFolder:GetAttribute("ShieldState") or GameFolder:GetAttribute("ShieldDestroyed") == true or ToggleDebounce == true then
+	if state == GameFolder:GetAttribute("BlastShieldState") or GameFolder:GetAttribute("ShieldDestroyed") == true or ToggleDebounce == true then
 		return
 	end
 
 	ToggleDebounce = true
-	GameFolder:SetAttribute("ShieldState", state)
+	GameFolder:SetAttribute("BlastShieldState", state)
 
 	local PosSign = state and POSITION_DELTA or -POSITION_DELTA
 

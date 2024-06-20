@@ -1,7 +1,7 @@
 --[ SERVICES ]--
 local TweenService = game:GetService("TweenService")
 local ServerScriptService = game:GetService("ServerScriptService")
-local CollectionService = game:GetService("CollectionService")
+local _CollectionService = game:GetService("CollectionService")
 
 --[ MODULES ]--
 local LightSystem = require(ServerScriptService.Systems.LightSystem)

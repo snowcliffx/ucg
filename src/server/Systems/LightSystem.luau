@@ -16,8 +16,6 @@ local TweenService = game:GetService("TweenService")
 type LightOptions = "Chamber" | "Control" | "Backup"
 
 type LightDetails = {
-	Color: string,
-	State: string,
 	Folder: Folder,
 	MaxToggleDelay: number,
 	MaxFlickerDelay: number,
@@ -42,27 +40,20 @@ local FlickerSound = ReplicatedStorage.SharedAssets.Audio.Light.Flicker
 local RandomInst = Random.new()
 
 --[ INFORMATION FOR EACH LIGHT TOGGLE ]--
---[ PREFERABLY DO NOT CHANGE "STATE" AND "COLOR" FOR ANY OF THEM ]--
 local ToggleDetails: { [LightOptions]: LightDetails } = {
 	Chamber = {
-		State = "ChamberLightState",
-		Color = "ChamberLightColor",
 		Folder = GameFolder.ChamberLights,
 		MaxToggleDelay = 2,
 		MaxFlickerDelay = 0.5,
 	},
 
 	Control = {
-		State = "ControlLightState",
-		Color = "ControlLightColor",
 		Folder = GameFolder.ControlRoomLights,
 		MaxToggleDelay = 1, -- TOGGLE
 		MaxFlickerDelay = 0.5,
 	},
 
 	Backup = {
-		State = "BackupLightState",
-		Color = "BackupLightColor",
 		Folder = GameFolder.BackupLights,
 		MaxToggleDelay = 1, -- TOGGLE
 		MaxFlickerDelay = 0.5,
@@ -106,19 +97,20 @@ function LightSystem.ToggleLights(light_type: LightOptions, state: boolean)
 	end
 
 	local LightType = ToggleDetails[light_type]
+	local LightFolder = LightType.Folder
 
-	if state == GameFolder:GetAttribute(LightType.State) then
+	if state == LightFolder:GetAttribute("LightState") then
 		return
 	end
 
-	GameFolder:SetAttribute(LightType.State, state)
+	LightFolder:SetAttribute("LightState", state)
 
 	-- DECLARING VARIABLES EARLY
 	local Color: Color3
 	local Sound: Sound
 
 	if state == true then
-		Color = GameFolder:GetAttribute(LightType.Color)
+		Color = LightFolder:GetAttribute("LightColor")
 		Sound = ToggleOnSound:Clone()
 	else
 		Color = BLACK_COLOR
@@ -139,9 +131,10 @@ function LightSystem.FlickerLights(light_type: LightOptions, curr_state: boolean
 	end
 
 	local LightType = ToggleDetails[light_type]
+	local LightFolder = LightType.Folder
 
 	local MaxFlickerDelay = LightType.MaxFlickerDelay
-	local NormalColor = GameFolder:GetAttribute(LightType.Color)
+	local NormalColor = LightFolder:GetAttribute("LightColor")
 
 	local Color1: Color3
 	local Color2: Color3

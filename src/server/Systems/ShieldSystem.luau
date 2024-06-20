@@ -77,7 +77,7 @@ function ShieldSystem.DestroyBlastShield()
 	ReactorStorage.Main.Beam.Main2.Enabled = true
 	ReactorStorage.Main.Beam.Particles2.Enabled = true
 
-	local BeamTween = TweenService:Create(ReactorStorage.Main.Beam, BEAM_TWEEN, { WorldPosition = BlastShield.Position})
+	local BeamTween = TweenService:Create(ReactorStorage.Main.Beam, BEAM_TWEEN, { WorldPosition = BlastShield.Position })
 	BeamTween:Play()
 
 	BeamTween.Completed:Wait()

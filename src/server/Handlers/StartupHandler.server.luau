@@ -86,12 +86,12 @@ InitializeClickDetector.MouseClick:Connect(function(player: Player)
 	InitializeClickDetector.MaxActivationDistance = 0
 
 	InitializeButton.Click:Play()
-	TweenService:Create(InitializeButton, BUTTON_TWEEN, { Position = InitializeButton.Position - BUTTON_PUSH}):Play()
+	TweenService:Create(InitializeButton, BUTTON_TWEEN, { Position = InitializeButton.Position - BUTTON_PUSH }):Play()
 
 	--// TODO ANNOUNCE
 
 	--// TODO INFORMATION STUFF
 
-	TweenService:Create(GlassHinge, GLASS_HINGE_TWEEN, { CFrame = GlassHinge.CFrame * CFrame.Angles(0, math.rad(-110), 0)})
+	TweenService:Create(GlassHinge, GLASS_HINGE_TWEEN, { CFrame = GlassHinge.CFrame * CFrame.Angles(0, math.rad(-110), 0) })
 	ReactorSystem.Initialize()
 end)

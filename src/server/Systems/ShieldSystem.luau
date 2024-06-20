@@ -102,15 +102,15 @@ function ShieldSystem.DestroyBlastShield()
 
 	BlastShield.Material = Enum.Material.CorrodedMetal
 
-	for index, particle in ipairs(BlastShield.Particles:GetChildren()) do
-		if particle:IsA("ParticleEmitter") then
-			particle.Enabled = true
-		end
-	end
-
 	for index, part in ipairs(BlastShield.Parts:GetChildren()) do
 		if part:IsA("BasePart") then
 			part.Material = Enum.Material.CorrodedMetal
+		end
+	end
+
+	for index, particle in ipairs(BlastShield.Particles:GetChildren()) do
+		if particle:IsA("ParticleEmitter") then
+			particle.Enabled = true
 		end
 	end
 

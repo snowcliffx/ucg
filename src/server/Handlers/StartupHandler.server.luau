@@ -1,3 +1,6 @@
+--!nocheck
+--!optimize 2
+
 --[ SERVICES ]--
 local TweenService = game:GetService("TweenService")
 local ServerScriptService = game:GetService("ServerScriptService")

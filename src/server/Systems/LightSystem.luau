@@ -79,7 +79,7 @@ local function ToggleLightEffects(lightpart: BasePart, color: Color3, sound: Sou
 
 	sound:Play()
 
-	-- TODO: CAMERA SHAKE!
+	--// TODO Camera Shake
 
 	lightpart.Color = color
 

@@ -50,7 +50,7 @@ function ReactorSystem.ShockWave(flicker: boolean)
 end
 
 function ReactorSystem.Initialize()
-	-- TODO: ANNOUNCE
+	--//TODO ANNOUNCE
 
 	GameFolder:SetAttribute("ReactorStatus", "STARTUP INITIATE")
 
@@ -91,7 +91,7 @@ function ReactorSystem.Initialize()
 
 	task.wait(4)
 
-	-- TODO: CAMERA SHAKE
+	--//TODO CAMERA SHAKE
 
 	GameFolder:SetAttribute("ReactorPower", 5)
 	GameFolder:SetAttribute("ReactorStatus", "CREATING NUCLEAR REACTION")
@@ -154,7 +154,7 @@ function ReactorSystem.Initialize()
 
 	task.wait(5)
 
-	-- TODO: CAMERA SHAKE
+	--//TODO CAMERA SHAKE
 
 	GameFolder:SetAttribute("ReactorPower", 1)
 	GameFolder:SetAttribute("CoolantPower", 1)
@@ -166,7 +166,7 @@ function ReactorSystem.Initialize()
 
 	GameFolder:SetAttribute("ReactorStatus", "STARTUP SUCCESS")
 
-	-- TODO: ANNOUNCE
+	--//TODO ANNOUNCE
 
 	GameFolder:SetAttribute("ControlsEnabled", true)
 	LightSystem.ToggleLights("Chamber", true)

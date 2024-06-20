@@ -90,7 +90,7 @@ end)
 GameFolder:GetAttributeChangedSignal("ShieldTemperature"):Connect(function()
 	local value: number = GameFolder:GetAttribute("ShieldTemperature")
 
-	ShieldProperties.Temperature.TemperatureBar.TemperatureValue.Text= value .. "°C"
+	ShieldProperties.Temperature.TemperatureBar.TemperatureValue.Text = value .. "°C"
 end)
 
 GameFolder:GetAttributeChangedSignal("ReactorPower"):Connect(function()

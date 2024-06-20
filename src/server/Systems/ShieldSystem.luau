@@ -12,11 +12,12 @@ local ShieldSystem = {}
 local GameFolder = game.Workspace.Game
 local BlastShield = GameFolder.Controls.BlastShield
 local ReactorStorage = GameFolder.Reactor
+local NormalShield = ReactorStorage.Shield
 
 --[ TWEEN CONSTANTS ]--
 local _LINEAR_TWEEN = TweenInfo.new(1, Enum.EasingStyle.Linear)
 local BLAST_SHIELD_TWEEN = TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
-local DEFAULT_SHIELD_TWEEN = TweenInfo.new(3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, 0, false, 3)
+local NORMAL_SHIELD_TWEEN = TweenInfo.new(3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut, 0, false, 3)
 
 --[ VECTOR CONSTANTS ]--
 local POSITION_DELTA = Vector3.new(0, 15, 0)
@@ -33,7 +34,7 @@ function ShieldSystem.InitializeShield()
 		end
 	end)
 
-	TweenService:Create(ReactorStorage.Shield, DEFAULT_SHIELD_TWEEN, { Transparency = -1 }):Play()
+	TweenService:Create(NormalShield, NORMAL_SHIELD_TWEEN, { Transparency = -1 }):Play()
 end
 
 function ShieldSystem.ToggleBlastShield(state: boolean)

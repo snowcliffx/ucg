@@ -88,6 +88,7 @@ function ReactorSystem.Initialize()
 
 	LightSystem.ToggleLights("Chamber", false)
 	LightSystem.ToggleLights("Control", false)
+	LightSystem.ToggleLights("Backup", true)
 
 	task.wait(4)
 
@@ -171,6 +172,7 @@ function ReactorSystem.Initialize()
 	GameFolder:SetAttribute("ControlsEnabled", true)
 	LightSystem.ToggleLights("Chamber", true)
 	LightSystem.ToggleLights("Control", true)
+	LightSystem.ToggleLights("Backup", false)
 
 	task.wait(5)
 
